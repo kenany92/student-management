@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+        </ul>
+    <ul class="navbar-nav mr-auto">
+    {% for locale in locales %}
+    {% if locale != app.request.locale %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('change_locale', {'locale': locale}) }}">{{locale}}<span class="sr-only">(current)</span></a>
+      </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+    </body>
+
+</html>

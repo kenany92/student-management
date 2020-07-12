@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="iEE8hPs" resname="Le montant de l'inscription ne doit pas être inférieur à 5000 !">
+        <source>Le montant de l'inscription ne doit pas être inférieur à 5000 !</source>
+        <target>The Registration amount must not be less than 5000 !</target>
+      </trans-unit>
+      <trans-unit id="kXLo7sm" resname="Bonjour">
+        <source>Bonjour</source>
+        <target>Hello</target>
+      </trans-unit>
+      <trans-unit id="z_kWFvC" resname="Liste des élèves inscrits :">
+        <source>Liste des élèves inscrits :</source>
+        <target>List of registered students :</target>
+      </trans-unit>
+      <trans-unit id="9Ord4ps" resname="Matricule">
+        <source>Matricule</source>
+        <target>Registration number</target>
+      </trans-unit>
+      <trans-unit id="ssEkU20" resname="Nom">
+        <source>Nom</source>
+        <target>Last Name</target>
+      </trans-unit>
+      <trans-unit id="4yW.j5A" resname="Prénom">
+        <source>Prénom</source>
+        <target>First name</target>
+      </trans-unit>
+      <trans-unit id=".sGf49V" resname="Classe">
+        <source>Classe</source>
+        <target>Class</target>
+      </trans-unit>
+      <trans-unit id="Rkn0tV4" resname="Date de naissance">
+        <source>Date de naissance</source>
+        <target>Date of birth</target>
+      </trans-unit>
+      <trans-unit id="rJkOoad" resname="Numéro du parent">
+        <source>Numéro du parent</source>
+        <target>Parent number</target>
+      </trans-unit>
+      <trans-unit id=".4BZ3Gd" resname="Actions">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="Sh6EfsR" resname="Voir">
+        <source>Voir</source>
+        <target>See</target>
+      </trans-unit>
+      <trans-unit id="IumSuye" resname="Editer">
+        <source>Editer</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="Xl0CFs4" resname="Supprimer">
+        <source>Supprimer</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="oNWO2R5" resname="Noms et prenoms">
+        <source>Noms et prenoms</source>
+        <target>Lastnames and firstnames</target>
+      </trans-unit>
+      <trans-unit id="eNawSYp" resname="Montant payé">
+        <source>Montant payé</source>
+        <target>Payroll amount</target>
+      </trans-unit>
+      <trans-unit id="cR5fLhm" resname="Fermer">
+        <source>Fermer</source>
+        <target>Close</target>
+      </trans-unit>
+      <trans-unit id="t8_nMCO" resname="Prenom">
+        <source>Prenom</source>
+        <target>First name</target>
+      </trans-unit>
+      <trans-unit id="BDKjwVi" resname="Photo de l'élève">
+        <source>Photo de l'élève</source>
+        <target>Student photo</target>
+      </trans-unit>
+      <trans-unit id="lHzAfis" resname="Montant">
+        <source>Montant</source>
+        <target>Amount</target>
+      </trans-unit>
+      <trans-unit id="RZUfasG" resname="Enregistrer les modifications">
+        <source>Enregistrer les modifications</source>
+        <target>Save Changes</target>
+      </trans-unit>
+      <trans-unit id="Rq05Fva" resname="Annuler">
+        <source>Annuler</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="vvp2L_M" resname="Êtes vous sur de vouloir supprimer cet élève">
+        <source>Êtes vous sur de vouloir supprimer cet élève</source>
+        <target>Are you sure you want to delete this student</target>
+      </trans-unit>
+      <trans-unit id="gsNI7pz" resname="Nouvelle inscription">
+        <source>Nouvelle inscription</source>
+        <target>New registration</target>
+      </trans-unit>
+      <trans-unit id="UzFhc1Y" resname="Accueil">
+        <source>Accueil</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="3QJdA5E" resname="Inscriptions">
+        <source>Inscriptions</source>
+        <target>Registrations</target>
+      </trans-unit>
+      <trans-unit id="_1_eksG" resname="Déconnexion">
+        <source>Déconnexion</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="cz0cdCZ" resname="Rechercher">
+        <source>Rechercher</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="SKI4MPT" resname="Connectez vous">
+        <source>Connectez vous</source>
+        <target>Connect please</target>
+      </trans-unit>
+      <trans-unit id="hRdkX4h" resname="Nom d'utilisateur">
+        <source>Nom d'utilisateur</source>
+        <target>User name</target>
+      </trans-unit>
+      <trans-unit id=".5yLjAZ" resname="Mot de passe">
+        <source>Mot de passe</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="CsPSyzA" resname="Se connecter">
+        <source>Se connecter</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="uhGL9.y" resname="English">
+        <source>English</source>
+        <target>Français</target>
+      </trans-unit>
+      <trans-unit id="RgFVc3f" resname="Aucun élève trouvé au nom/prénom/matricule/classe de : ">
+        <source>Aucun élève trouvé au nom/prénom/matricule/classe de : </source>
+        <target>No student found in surname/first name/registration number/class of : </target>
+      </trans-unit>
+      <trans-unit id="7CL_qtH" resname="Résultat de la recherche pour le nom/prénom/matricule/classe : ">
+        <source>Résultat de la recherche pour le nom/prénom/matricule/classe : </source>
+        <target>Search result for surname/first name/service number/class : </target>
+      </trans-unit>
+      <trans-unit id=".fLhIJO" resname="Inscrire un nouvel élève">
+        <source>Inscrire un nouvel élève</source>
+        <target>Register a new student</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

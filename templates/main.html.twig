@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">GIE App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    {% if controller_name == "IndexController" %}
+    <li class="nav-item active">
+        <a class="nav-link" href="/index">{% trans %}Accueil{% endtrans %}<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/inscriptions">{% trans %}Inscriptions{% endtrans %}</a>
+      </li>
+    {% endif %}
+    {% if controller_name == "InscriptionsController" %}
+    <li class="nav-item">
+        <a class="nav-link" href="/index">{% trans %}Accueil{% endtrans %}<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/inscriptions">{% trans %}Inscriptions{% endtrans %}</a>
+      </li>
+    {% endif %}
+      
+      
+      {% if app.user %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ app.user.username }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{{ path('app_logout') }}">{% trans %}Déconnexion{% endtrans %}</a>
+        </div>
+      </li>
+    {% endif %}
+    </ul>
+    <ul class="navbar-nav mr-auto">
+    {% for locale in locales %}
+    {% if locale != app.request.locale %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('change_locale', {'locale': locale}) }}">{{locale}}<span class="sr-only">(current)</span></a>
+      </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+    <div class="form-group">
+    
+    </div>
+    <form method="post" action="{{ path('rechercher')}}" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="{% trans %}Rechercher{% endtrans %}" aria-label="Search" name="nom">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans %}Rechercher{% endtrans %}</button>
+    </form>
+  </div>
+</nav>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>

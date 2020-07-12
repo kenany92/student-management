@@ -1,0 +1,255 @@
+{% extends 'main.html.twig' %}
+
+{% block title %}Hello InscriptionsController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<p style="color: red;">{{ error }}</p>
+<h2>{{ list_title }}</h2>
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">{% trans %}Matricule{% endtrans %}</th>
+      <th scope="col">{% trans %}Nom{% endtrans %}</th>
+      <th scope="col">{% trans %}Prénom{% endtrans %}</th>
+      <th scope="col">{% trans %}Classe{% endtrans %}</th>
+      <th scope="col">{% trans %}Date de naissance{% endtrans %}</th>
+      <th scope="col">{% trans %}Numéro du parent{% endtrans %}</th>
+      <th scope="col">{% trans %}Actions{% endtrans %}</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for eleve in eleves %}
+    <tr>
+      <th scope="row">#</th>
+      <td>{{eleve.matricule}}</td>
+      <td>{{eleve.nom}}</td>
+      <td>{{eleve.prenom}}</td>
+      <td>{{eleve.classe}}</td>
+      <td>{{eleve.DateNaissance|date('d-m-Y')}}</td>
+      <td>{{eleve.getNumeroParent()}}</td>
+      <td>
+         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#{{eleve.matricule}}voir">{% trans %}Voir{% endtrans %}</button>
+         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#{{eleve.matricule}}editer">{% trans %}Editer{% endtrans %}</button>
+         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{eleve.matricule}}supprimer">{% trans %}Supprimer{% endtrans %}</button>
+      </td>
+    </tr>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="{{eleve.matricule}}voir">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{% trans %}Voir{% endtrans %}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card">
+  <div class="card-header">
+    {% trans %}Noms et prenoms{% endtrans %} : <strong>{{eleve.nom}}  {{eleve.prenom}}</strong>
+  </div>
+  <div class="card-body">
+  <div class="row">
+  <div class="col-md-7">
+    <h5 class="card-title">{% trans %}Matricule{% endtrans %} : {{ eleve.matricule }}</h5>
+    <p class="card-text">{% trans %}Classe{% endtrans %} : {{eleve.classe}}</p>
+    <p class="card-text">{% trans %}Date de naissance{% endtrans %} : {{eleve.dateNaissance|date('d-m-Y')}}</p>
+    <p class="card-text">{% trans %}Numéro du parent{% endtrans %} : {{eleve.numeroParent}}</p>
+    <p class="card-text">{% trans %}Montant payé{% endtrans %} : {{eleve.montant}}</p>
+  </div>
+  <div class="col-md-5">
+  <div class="card-group">
+  <div class="card">
+    <img class="card-img-top" src="{{eleve.photo}}" alt="{{ eleve.nom }}">
+    <div class="card-body">
+      <h5 class="card-title">{{eleve.nom}} {{eleve.prenom}}</h5>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans %}Fermer{% endtrans %}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="{{eleve.matricule}}editer">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{% trans %}Editer{% endtrans %}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="{{ path('editer',  {"id": eleve.id})}}">
+      <input type="number" class="form-control" hidden="true" id="id" value="{{ eleve.id }}" name="id">
+      <div class="modal-body">
+      <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="nom" class="col-form-label">{% trans %}Nom{% endtrans %}:</label>
+            <input type="text" class="form-control" id="nom" value="{{ eleve.nom }}" name="nom">
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="prenom" class="col-form-label">{% trans %}Prenom{% endtrans %}:</label>
+            <input type="text" class="form-control" id="prenom" value="{{ eleve.prenom }}" name="prenom">
+          </div>
+          </div>
+          </div>
+          <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="classe" class="col-form-label">Classe:</label>
+            <select id="classe"  value="{{ eleve.classe }}" name="classe">
+              <option></option>
+              <option>Sil-A</option>
+              <option>Sil-B</option>
+              <option>Cp-A</option>
+              <option>Cp-B</option>
+              <option>CE1-A</option>
+              <option>CE1-B</option>
+              <option>CE2-A</option>
+              <option>CE2-B</option>
+              <option>CM1-A</option>
+              <option>CM1-B</option>
+              <option>CM2-A</option>
+              <option>CM2-B</option>
+            </select>
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="date" class="col-form-label">{% trans %}Date de naissance{% endtrans %}:</label>
+            <input type="date" id="date" name="date_naissance" value="{{ eleve.dateNaissance|date('Y-m-d') }}">
+          </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="numero" class="col-form-label">{% trans %}Numéro du parent{% endtrans %}:</label>
+            <input type="text" class="form-control" id="numero"  value="{{ eleve.numeroParent }}" name="numero_parent">
+          </div>
+          <div class="form-group">
+            <label for="photo" class="col-form-label">{% trans %}Photo de l'élève{% endtrans %}:</label>
+            <input type="file" class="form-control" id="photo" name="photo">
+          </div>
+          <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="matricule" class="col-form-label">{% trans %}Matricule{% endtrans %}:</label>
+            <input type="text" class="form-control" id="matricule" disabled value="{{ eleve.matricule }}" name="matricule">
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="montant" class="col-form-label">{% trans %}Montant{% endtrans %}:</label>
+            <input type="number" class="form-control" id="montant" disabled  value="{{ eleve.montant }}" name="montant">
+          </div>
+          </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+          <button type="submit" class="btn btn-success">{% trans %}Enregistrer les modifications{% endtrans %}</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans %}Annuler{% endtrans %}</button>
+          </div>
+</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="{{eleve.matricule}}supprimer">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{% trans %}Supprimer{% endtrans %}</h5>
+        
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{% trans %}Êtes vous sur de vouloir supprimer cet élève{% endtrans %} : {{ eleve.nom }}  {{ eleve.prenom }} ?</p>
+      </div>
+      
+      <div class="modal-footer">
+      <a type="button" href="{{ path('supprimer',  {"id": eleve.id})}}" class="btn btn-danger">{% trans %}Supprimer{% endtrans %}</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans %}Annuler{% endtrans %}</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+    {% endfor %}
+  </tbody>
+  
+</table>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inscrire">{% trans %}Inscrire un nouvel élève{% endtrans %}</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="inscrire">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{% trans %}Nouvelle inscription{% endtrans %}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {{ form_start(form) }}
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            {{ form_row(form.nom) }}
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            {{ form_row(form.prenom) }}
+          </div>
+          </div>
+          </div>
+          <div class="row">
+          <div class="col-md-6">
+          <div class="form-group">
+            {{ form_row(form.classe) }}
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            {{ form_row(form.date_naissance) }}
+          </div>
+          </div>
+          </div>
+          <div class="form-group">
+            {{ form_row(form.numero_parent) }}
+          </div>
+          <div class="form-group">
+            {{ form_row(form.photo) }}
+          </div>
+          <div class="form-group">
+            {{ form_row(form.montant) }}
+          </div>
+        </div>
+        
+      <div class="modal-footer">
+        {{ form_row(form.Inscrire) }}
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans %}Annuler{% endtrans %}</button>
+      </div>
+      {{ form_end(form) }}
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
