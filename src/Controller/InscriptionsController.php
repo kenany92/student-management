@@ -166,6 +166,7 @@ class InscriptionsController extends AbstractController
         if($post->get('numero_parent') != null || $post->get('numero_parent')!=""){
             $eleve->setNumeroParent($post->get('numero_parent'));
         }
+        $eleve->setDateDerniereModif(new \DateTime('now'));
         $entityManager->flush();    
         }  
             
