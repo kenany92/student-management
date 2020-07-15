@@ -181,7 +181,7 @@ class InscriptionsController extends AbstractController
      * @Route("/inscriptions/rechercherEleve", name="rechercher")
      */
 
-    public function rechercherEleve(Request $request, EleveRepository $eleveRepository)
+    public function rechercherEleve(Request $request, EleveRepository $eleveRepository, TranslatorInterface $translator)
     {
         $eleve = new Eleve();
             $error="";
@@ -226,7 +226,8 @@ class InscriptionsController extends AbstractController
             ]);  
         }
         else{
-            $listTitle = "Résultat de la recherche pour le nom/prénom/matricule/classe : ".$post->get('nom');
+            $message = $translator->trans("Résultat de la recherche pour le nom/prénom/matricule/classe : ");
+            $listTitle = $message.$post->get('nom');
             $entityManager->flush(); 
             return $this->render('inscriptions/index.html.twig', [
                 'controller_name' => 'InscriptionsController',
